@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+
+  {%load static %}
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>{% block title %}{% endblock %}</title>
+      <!--load the css - the style of the page--> 
+      <link href="{% static 'css/vrpStyle.css' %}" rel="stylesheet">
+
+      <!-- ref W3 site -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <style>
+   
+          
+      </style>
+  </head>
+    
+<body style="height:1500px">
+   <main>
+      {% block content %}
+      {% endblock %}
+      
+  </main>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">VRP</a></li>
+          <li><a href="#">Simulation</a></li>
+          <li><a href="#">Results</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container grid-container" style="margin-top:50px">
+         <div class="Main">MAIN</div>
+         <div class="Description">Description</div>      
+         <div class="Subtitle">SUBTITLE</div>
+         <div class="Logo">LOGO</div>  
+      </div>
+   </div>
+</body>
+</html>

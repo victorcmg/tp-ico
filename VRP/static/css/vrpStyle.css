@@ -1,0 +1,51 @@
+.grid-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows:  1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 0mm;
+    padding: 0mm;
+    grid-template-areas:
+        "Main"
+        "Description"
+        "Subtitle"
+        "Logo";
+}
+
+
+.Main { 
+    grid-area: Main; 
+    border: 0mm;
+    text-align: center;
+    background-color: orangered;
+    width: 1000mm;
+    height: 100mm;
+}
+
+.Description { 
+    grid-area: Description; 
+    border: 0mm;
+    text-align: center;
+    background-color: green;
+    width: 1000mm;
+    height: 50mm;
+}
+
+.Subtitle { 
+    grid-area: Subtitle;
+    text-align: center;
+    border: 0mm;
+    background-color: gray;
+    width: 1000mm;
+    height: 20mm;
+}
+
+.Logo { 
+    grid-area: Logo;
+    text-align: center;
+    border: 0mm;
+    background-color: white;
+    height: 50mm;
+    
+}
+  

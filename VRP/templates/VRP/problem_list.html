@@ -1,0 +1,19 @@
+{% extends "VRP/base.html" %}
+
+{% block title %} VRP 🐍{% endblock %}
+
+{% block content%}
+    {% for problem in problem_list %}
+        <article>
+            <h2>
+                <a href="{{ organization.get_absolute_url }}">
+                {{ problem.name }}
+                </a>
+            </h2>
+            <p class="date"> 
+                Publish in {{ problem.initial_date }} with the user {{ problem.author }}
+            </p>
+            {{ problem.slug|linebreaks|truncatewords:10 }}
+        </article>
+        {% endfor %}
+{% endblock %}
