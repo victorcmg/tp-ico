@@ -1,0 +1,18 @@
+
+body{
+    margin: 5px ;
+}
+
+body #mapid { height: 500px; }
+body #coord{
+    margin-bottom: 5px;
+}
+#search{
+    margin-bottom: 8px;
+}
+
+#mapid{
+    border: 2px solid rgb(56, 55, 55);
+}
+.address { cursor:pointer }
+.address:hover { color:#AA0000;text-decoration:underline }
