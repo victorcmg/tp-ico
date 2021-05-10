@@ -65,6 +65,12 @@
             
   
         }
+
+        .button1{
+            margin-top: -20vw;
+            position: fixed;
+
+        }
         
 
         
@@ -73,27 +79,32 @@
 <body>
 
         {% block content %}
-        {% endblock %}
-        <div class="topnav">
-            <a class="active" href="#VRP">Home</a>
-            <a href="#VRP">VRP</a>
-            <a href="#SIMULATION">SIMULATION</a>
+        {% endblock %}        <div class="topnav">
+            <a class="active" href="#VRP">VRP</a>
+            <a href="#RESULTS">ABOUT US</a>
             <a href="#ABOUT US">ABOUT US</a>
           </div>
           
-          <div id="container">
-    
+          <div id="container">    
             <div id="coord">
                 <h3>Coordenadas</h3>
                 <form >
                     <div class="form-row">
                        <div class="form-group col-md-3">
-                        <input type="text" class="form-control" name="lat" id="lat">
+                            <h3>Latitude</h3>
+                            <input type="text" class="form-control" name="lat" id="lat">
                         </div>
                         <div class="form-group col-md-3">
-                        <input type="text" class="form-control" name="lng" id="lng">
+                            <h3>Longitude</h3>
+                            <input type="text" class="form-control" name="lng" id="lng">
+                            <div style="margin-left: 50vh;margin-top: -3.1vh;position: fixed;" >
+                                <button  type="button" class="btn btn-primary" onclick="address_search();">pesquisar</button>
+                            </div>
+                           </div>
+                        <div class="form-group col-md-3">
                         </div>
                     </div>
+                    
                 </form>
             </div>
             <div id="search">
@@ -109,8 +120,7 @@
                     </div>
                 </form>
                 <div id="results"></div>
-            </div>
-            
+            </div>          
             
         </div>
     
