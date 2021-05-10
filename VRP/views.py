@@ -11,4 +11,4 @@ class OrganizationListView(ListView):
     model = Problem
 
 def index(response):
-      return render(response,"index.html")
+    return render(response,"index.html")
