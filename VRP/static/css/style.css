@@ -2,13 +2,12 @@ body #mapid { height: 500px;
  }
 
 body #coord{
-    margin-bottom: 5px;
-    padding: 5vh 5vh;
+    padding: 1vh 5vh;
 }
 
 #search{
-    margin-bottom: 8px;
-    padding: 5vh 5vh;
+    margin-bottom: 0px;
+    padding: 1vh 5vh;
 }
 
 #mapid{
@@ -28,9 +27,9 @@ body #coord{
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 1vw 1vw;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 1.5vw;
 }
 
 .topnav a:hover {
