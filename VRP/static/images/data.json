@@ -1,5 +1,15 @@
 [
-    {"Simulation":"aa","Algorithm":"bb","Vehicles":"bb","Routes":"bb","Map":"001"},
-    {"Simulation":"aa1","Algorithm":"bb1","Vehicles":"bb1","Routes":"bb1","Map":"002"}
+    {
+        "Simulation":"1",
+        "Algorithm":"a",
+        "Vehicles":"3",
+        "Routes":[
+            "0,2,3,4",
+            "5,6,7,9"                
+        ],
+        "Distance":["3","5"],
+        "Map":"001"}
+
+
 
 ]
