@@ -1,7 +1,133 @@
-{% extends "VRP/base.html" %}
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-{% block title %} VRP 🐍{% endblock %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-{% block content%}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-{% endblock %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <link href="{% static 'data/data.json' %}" rel="stylesheet">
+
+   <script 
+    defer
+   src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+      <!-- INCLUDING JQUERY-->
+   <script src= "https://code.jquery.com/jquery-3.5.1.js"> </script>
+   <script  defer src="{% static 'js/app.js' %}"></script>
+   <script  defer src="{% static 'js/data.json' %}"></script>
+   <title>{% block title %}{% endblock %}</title>
+   <title>Document</title>
+
+   <style>
+      table {
+            margin: 0 auto;
+            font-size: large;
+            border: 1px solid black;
+        }
+  
+        h1 {
+            text-align: center;
+            color:white;
+            font-size: xx-large;
+            font-family: 'Gill Sans', 
+                'Gill Sans MT', ' Calibri', 
+                'Trebuchet MS', 'sans-serif';
+        }
+  
+        td {
+            background-color: #E4F5D4;
+            border: 1px solid black;
+        }
+  
+        th,
+        td {
+            font-weight: bold;
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+        }
+  
+        td {
+            font-weight: lighter;
+        }
+   </style>
+</head>
+<body style="background-image: url('{% static 'images/backgroundImage.jpg' %}');" >
+    {% block content %}
+    {% endblock %}    
+    <div class="topnav">
+        <a href="/">VRP</a>
+        <a href="/result/">RESULTS</a>
+        <a href="/about/">ABOUT US</a>
+    </div>
+    <section>
+      <h1>Table Results</h1>
+
+      <!-- TABLE CONSTRUCTION-->
+      <table id='table'>
+          <!-- HEADING FORMATION -->
+          <tr style="color: white;">
+              <th>Simulation</th>
+              <th>Algorithm</th>
+              <th>Vehicles</th>
+              <th>Routes</th>
+              <th>Distance</th>
+              <th>Map</th>
+          </tr>    
+
+          <script>
+              $(document).ready(function () {
+
+                  // FETCHING DATA FROM JSON FILE
+                  $.getJSON("{% static 'images/data.json' %}", 
+                          function (data) {
+                      var student = '';
+
+                      // ITERATING THROUGH OBJECTS
+                      $.each(data, function (key, value) {
+
+                          //CONSTRUCTION OF ROWS HAVING
+                          // DATA FROM JSON OBJECT
+                          student += '<tr>';
+                          student += '<td>' + 
+                              value.Simulation + '</td>';
+
+                          student += '<td>' + 
+                              value.Algorithm + '</td>';
+
+                          student += '<td>' + 
+                              value.Vehicles + '</td>';
+
+                          student += '<td>' + 
+                              value.Routes + '</td>';
+
+                              student += '<td>' + 
+                              value.Routes + '</td>';
+
+                          student += '<td>' + 
+                              value.Map + '<img src="{% static 'images/map.png' %}" />';
+                              
+                          student += '</tr>';
+                      });
+                        
+                      //INSERTING ROWS INTO TABLE 
+                      $('#table').append(student);
+                  });
+              });
+          </script>
+  </section>
+
+
+</body>
+</html>

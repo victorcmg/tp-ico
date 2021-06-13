@@ -1,3 +1,4 @@
+
 const mymap = L.map('mapid').setView([38.722252, -9.139337], 15);
 let coord = [];
 var myMarker = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -12,7 +13,7 @@ function addMarker(e){
 //console.log(latlng.lat + ', ' + latlng.lng)
 //L.marker([lat, lng]).addTo(mymap)
 const {lat , lng} = e.latlng;
-coord.push({'lat':lat,'long':lng})
+coord.push([lat,lng])
 const marker = new L.marker(e.latlng, {
     draggable: true
   }).addTo(mymap)
@@ -80,13 +81,14 @@ function address_search()
  xmlhttp.send();
 }
 
- document.querySelector('.btn-sender').addEventListener('click',sendJson)
+ //document.querySelector('.btn-sender').addEventListener('click',sendJson)
 
 
 
- function sendJson(){
+ /*function sendJson(){
+   console.log(coord)
   let xhr = new XMLHttpRequest();
-  let url = "./routing-algorithm/vrp-tp-ico.py";
+  let url = "post/request/ajax";
 //{% url 'index' %}
   // open a connection
   xhr.open("POST", url, true);
@@ -107,7 +109,30 @@ function address_search()
   // Converting JSON data to string
   var data = JSON.stringify({ "post_data":coord});
 
+  
   // Sending data with the request
   xhr.send(data);
+}*/
+
+
+$(".btn-sender").click(function () {
+console.log(coord)
+let num_veiculos =parseInt($("#nr_veiculos").val())
+$.ajaxSetup({
+  headers: {
+      "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+  }
+});
+$.ajax({
+url: 'post/request/ajax',
+method: 'POST',
+data: JSON.stringify({'data':coord,'num_veiculos':num_veiculos}),
+dataType: 'json',
+success: function (data) {
+if (data.taken) {
+  
 }
- 
+}
+
+});
+});

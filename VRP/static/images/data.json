@@ -1,0 +1,16 @@
+[
+    {
+        "Simulation":"1",
+        "Algorithm":"a",
+        "Vehicles":"3",
+        "Routes":[
+            "0,2,3,4",
+            "5,6,7,9"                
+        ],
+        "Distance":["3","5"],
+        "Map":"mapIcon.png"
+    }
+
+
+
+]
