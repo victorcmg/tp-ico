@@ -31,7 +31,16 @@ def get_routes_for_vehicles(coordinates, num_vehicles, solution_strategy=routing
 
     solution = routing.SolveWithParameters(search_parameters)
 
-    return get_routes(data, manager, routing, solution)
+    routes = []
+    routes_aux = get_routes(data, manager, routing, solution)
+
+    print(routes_aux)
+
+    for route in routes_aux:
+        if route[1] > 0 and len(route[0]) > 1:
+            routes.append(route)
+
+    return routes
 
 
 def get_distance_matrix(coordinates):

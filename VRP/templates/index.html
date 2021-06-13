@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -15,15 +15,20 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
-
+   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script 
     defer
    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+   
    <script  defer src="{% static 'js/app.js' %}"></script>
 
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> 838c03ff5a0fe3c5c2c41f0a9d0bae90b2e102ac
    <title>{% block title %}{% endblock %}</title>
    <title>Document</title>
 
@@ -78,7 +83,7 @@
           <div id="container">    
             <div id="coord">
                 <h3 class="title">Coordenadas</h3>
-                <form >
+               
                     <div class="form-row">
                        <div class="form-group col-md-1">
                             <h3 class="text">Latitude</h3>
@@ -95,11 +100,12 @@
                         </div>
                       </div>
                     
-                </form>
+               
             </div>
             <div id="search">
                
-                <form>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <h3  class="text">Pesquisar Rua/Local</h3>
@@ -110,7 +116,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <h3 class="text" style="margin-left: 35vh;margin-top: 0vh;">Nº Veículos</h3>
-                            <input style="width: 20vh; margin-left: 35vh;" type="text"  class="form-control" name="address" id="address">
+                            <input style="width: 20vh; margin-left: 35vh;" type="text"  class="form-control" name="nr_veiculos" id="nr_veiculos">
                         </div>
                         <div class="form-group col-md-1">
                             <button style="margin-left: -9vh;margin-top: 5vh;" type="button" class="btn btn-primary" onclick="address_search();">Calcular</button>
@@ -148,8 +154,9 @@
         <h4 class="text" style="font-size: 1vw;" >-[0,0,0,0,0,0] with the distance traveled of {{ distance1 }}</h>
     </div>
     
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <!--
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        -->
     </body>
     </html>
