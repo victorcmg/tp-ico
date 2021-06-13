@@ -1,16 +1,12 @@
-[
-    {
-        "Simulation":"1",
-        "Algorithm":"a",
-        "Vehicles":"3",
-        "Routes":[
-            "0,2,3,4",
-            "5,6,7,9"                
-        ],
-        "Distance":["3","5"],
-        "Map":"mapIcon.png"
-    }
-
-
-
-]
+{
+      "Simulation": "1",
+      "Algorithm": "a",
+      "Vehicles": 1,
+      "Routes": [
+            "0,7,6,5,4,3,2,1"
+      ],
+      "Distance": [
+            "5"
+      ],
+      
+}

@@ -45,26 +45,44 @@ def ajax_post_view(request):
     print(routes)
     distances = []
     routes_str = []
-
+   
     for route in routes:
-       # distances.push(str(route[1]))
-        #string_ints = [str(int) for int in route[0]]
+        distances.append(str(route[1]))
+        string_ints = [str(int) for int in route[0]]
         
-        #str_of_ints = ",".join(string_ints)
-        #routes_str.push(str_of_ints)
+        str_of_ints = ",".join(string_ints)
+        routes_str.append(str_of_ints)
         
-        new_data = {
-        "Simulation": "1",
+    data = {
+        "ID": "1",
         "Algorithm": "a",
         "Vehicles": len(routes),
-        "Routes": [str(int) for int in route[0]],
-        "Distance": str(route[1]),
-        "Map": "mapIcon.png"
+        "Routes":routes_str,
+        "Distance":distances
     }
    
-    print(new_data)
+    print(data)
     #print(distances)
+    #json_object = json.dumps(new_data, indent = 6)
+  
+# Serializing json 
+    #json_object = json.dumps(data)
+  
+# Writing to sample.json
+    #with open("VRP/static/images/data.json", "w") as outfile:
+        #outfile.write(json_object)
+    write_json(data,'VRP/static/images/data.json')    
     
     return JsonResponse({'data': 'data'})
 
 
+def write_json(new_data, filename='data.json'):
+    with open(filename,'r+') as file:
+          # First we load existing data into a dict.
+        file_data = json.load(file)
+        # Join new_dat3a with file_data
+        file_data.update(new_data)
+        # Sets file's current position at offset.
+        file.seek(0)
+        # convert back to json.
+        json.dump(file_data, file, indent = 6)
