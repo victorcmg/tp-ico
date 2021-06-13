@@ -1,5 +1,5 @@
 const mymap = L.map('mapid').setView([38.722252, -9.139337], 15);
-
+let coord = [];
 var myMarker = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
@@ -12,6 +12,7 @@ function addMarker(e){
 //console.log(latlng.lat + ', ' + latlng.lng)
 //L.marker([lat, lng]).addTo(mymap)
 const {lat , lng} = e.latlng;
+coord.push({'lat':lat,'long':lng})
 const marker = new L.marker(e.latlng, {
     draggable: true
   }).addTo(mymap)
@@ -78,3 +79,35 @@ function address_search()
  xmlhttp.open("GET", url, true);
  xmlhttp.send();
 }
+
+ document.querySelector('.btn-sender').addEventListener('click',sendJson)
+
+
+
+ function sendJson(){
+  let xhr = new XMLHttpRequest();
+  let url = "./routing-algorithm/vrp-tp-ico.py";
+//{% url 'index' %}
+  // open a connection
+  xhr.open("POST", url, true);
+
+  // Set the request header i.e. which type of content you are sending
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  // Create a state change callback
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+
+          // Print received data from server
+         // result.innerHTML = this.responseText;
+
+      }
+  };
+
+  // Converting JSON data to string
+  var data = JSON.stringify({ "post_data":coord});
+
+  // Sending data with the request
+  xhr.send(data);
+}
+ 
