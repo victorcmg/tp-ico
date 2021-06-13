@@ -64,7 +64,6 @@
    </style>
 </head>
 <body style="background-image: url('{% static 'images/backgroundImage.jpg' %}');" >
-
     {% block content %}
     {% endblock %}    
     <div class="topnav">
@@ -113,12 +112,12 @@
                           student += '<td>' + 
                               value.Routes + '</td>';
 
-                          student += '<td>' + 
-                              value.Distance + '</td>';
+                              student += '<td>' + 
+                              value.Routes + '</td>';
 
                           student += '<td>' + 
-                              value.Map + '</td>';
-
+                              value.Map + '<img src="{% static 'images/map.png' %}" />';
+                              
                           student += '</tr>';
                       });
                         
