@@ -21,33 +21,44 @@
    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+      <!-- INCLUDING JQUERY-->
+   <script src= "https://code.jquery.com/jquery-3.5.1.js"> </script>
    <script  defer src="{% static 'js/app.js' %}"></script>
    <title>{% block title %}{% endblock %}</title>
    <title>Document</title>
 
    <style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 50%;
-        color: white;
-        margin-top: 5vw;
-        margin-left: 10vw;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: grey;
-    }
-    tr:nth-child(odd) {
-        background-color:rgba(128, 128, 128, 0.452);
+      table {
+            margin: 0 auto;
+            font-size: large;
+            border: 1px solid black;
         }
-        
+  
+        h1 {
+            text-align: center;
+            color: #006600;
+            font-size: xx-large;
+            font-family: 'Gill Sans', 
+                'Gill Sans MT', ' Calibri', 
+                'Trebuchet MS', 'sans-serif';
+        }
+  
+        td {
+            background-color: #E4F5D4;
+            border: 1px solid black;
+        }
+  
+        th,
+        td {
+            font-weight: bold;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+  
+        td {
+            font-weight: lighter;
+        }
    </style>
 </head>
 <body style="background-image: url('{% static 'images/backgroundImage.jpg' %}');" >
@@ -59,66 +70,55 @@
         <a href="/result/">RESULTS</a>
         <a href="/about/">ABOUT US</a>
     </div>
+    <section>
+      <h1>GeeksForGeeks</h1>
 
-      
-    <table>
-        <tr>
-          <th>ID Simulation</th>
-          <th>Algorithm</th>
-          <th>Vehicles Number</th>
-          <th>Route Number</th>
-          <th>Distance of Route</th>
-          <th>Map</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>Roland Mendel</td>
-          <td>Austria</td>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>Helen Bennett</td>
-          <td>UK</td>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus Winecellars</td>
-          <td>Yoshi Tannamuri</td>
-          <td>Canada</td>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Magazzini Alimentari Riuniti</td>
-          <td>Giovanni Rovelli</td>
-          <td>Italy</td>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-      </table>
+      <!-- TABLE CONSTRUCTION-->
+      <table id='table'>
+          <!-- HEADING FORMATION -->
+          <tr>
+              <th>GFG UserHandle</th>
+              <th>Practice Problems</th>
+              <th>Coding Score</th>
+              <th>GFG Articles</th>
+          </tr>
+
+          <script>
+              $(document).ready(function () {
+
+                  // FETCHING DATA FROM JSON FILE
+                  $.getJSON("data.json", 
+                          function (data) {
+                      var student = '';
+
+                      // ITERATING THROUGH OBJECTS
+                      $.each(data, function (key, value) {
+
+                          //CONSTRUCTION OF ROWS HAVING
+                          // DATA FROM JSON OBJECT
+                          student += '<tr>';
+                          student += '<td>' + 
+                              value.Simulation + '</td>';
+
+                          student += '<td>' + 
+                              value.Algorithm + '</td>';
+
+                          student += '<td>' + 
+                              value.Vehicles + '</td>';
+
+                          student += '<td>' + 
+                              value.Routes + '</td>';
+
+                          student += '</tr>';
+                      });
+                        
+                      //INSERTING ROWS INTO TABLE 
+                      $('#table').append(student);
+                  });
+              });
+          </script>
+  </section>
+
 
 </body>
 </html>
