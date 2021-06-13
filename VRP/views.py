@@ -13,6 +13,11 @@ class OrganizationListView(ListView):
 def index(response):
     return render(response,"index.html")
 
+def result(response):
+    return render(response,"result.html")
+
+def about(response):
+    return render(response,"about.html")
 
 def ajax_post_view(request):
     data_from_post = json.load(request)['post_data'] #Get data from POST request
@@ -22,6 +27,6 @@ def ajax_post_view(request):
         'my_data':data_from_post,
     }
     
-    
+
     print(data)
     return JsonResponse(data)

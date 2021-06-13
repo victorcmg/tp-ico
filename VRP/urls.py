@@ -9,7 +9,7 @@ app_name = 'VRP'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('result/', TemplateView.as_view(template_name='result.html')),   
-    path("list/", views.OrganizationListView.as_view(), name="list"),
+    path('result/', views.index, name='result'),   
+    path('about/', views.index, name='about'), 
 
 ]
