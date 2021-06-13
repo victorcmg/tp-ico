@@ -11,7 +11,11 @@ class OrganizationListView(ListView):
     model = Problem
 
 def index(response):
-    return render(response,"index.html")
+    context = {
+        "distance1" : 1,
+    }
+
+    return render(response,"index.html",context)
 
 def result(response):
     return render(response,"result.html")
