@@ -9,7 +9,7 @@ app_name = 'VRP'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('result/', views.index, name='result'),   
-    path('about/', views.index, name='about'), 
+    path('result/', views.result, name='result'),   
+    path('about/', views.about, name='about'), 
 
 ]
