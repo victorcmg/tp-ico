@@ -37,12 +37,34 @@ def ajax_post_view(request):
     
     cordenadas= json.load(request)
    
-    print(cordenadas['data'])
-    print(cordenadas['num_veiculos'])
+   # print(cordenadas['data'])
+    #print(cordenadas['num_veiculos'])
     
     routes = get_routes_for_vehicles( cordenadas['data'], cordenadas['num_veiculos'])
     
     print(routes)
+    distances = []
+    routes_str = []
+
+    for route in routes:
+       # distances.push(str(route[1]))
+        #string_ints = [str(int) for int in route[0]]
+        
+        #str_of_ints = ",".join(string_ints)
+        #routes_str.push(str_of_ints)
+        
+        new_data = {
+        "Simulation": "1",
+        "Algorithm": "a",
+        "Vehicles": len(routes),
+        "Routes": [str(int) for int in route[0]],
+        "Distance": str(route[1]),
+        "Map": "mapIcon.png"
+    }
+   
+    print(new_data)
+    #print(distances)
+    
     return JsonResponse({'data': 'data'})
 
 

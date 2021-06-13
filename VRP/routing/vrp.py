@@ -89,5 +89,5 @@ if __name__ == '__main__':
                    [52.341144, 4.946311],
                    [52.339915, 4.961417]]
     routes = get_routes_for_vehicles(coordinates, num_vehicles=3)
-    print(routes)
+    #print(routes)
 
