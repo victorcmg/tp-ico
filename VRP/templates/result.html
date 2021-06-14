@@ -91,15 +91,15 @@
                   $.getJSON("{% static 'images/data.json' %}", 
                           function (data) {
                       var student = '';
-
+                      var counter =0;
                       // ITERATING THROUGH OBJECTS
                       $.each(data, function (key, value) {
-
+                                counter = counter +1
                           //CONSTRUCTION OF ROWS HAVING
                           // DATA FROM JSON OBJECT
                           student += '<tr>';
                           student += '<td>' + 
-                              value.ID + '</td>';
+                            counter + '</td>';
 
                           student += '<td>' + 
                               value.Vehicles + '</td>';
