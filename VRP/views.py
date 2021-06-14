@@ -71,7 +71,7 @@ def ajax_post_view(request):
 # Writing to sample.json
     #with open("VRP/static/images/data.json", "w") as outfile:
         #outfile.write(json_object)
-    write_json(data,'VRP/static/images/data.json')    
+    #write_json(data,'VRP/static/images/data.json')    
     
     return JsonResponse({'data': 'data'})
 
@@ -83,6 +83,6 @@ def write_json(new_data, filename='data.json'):
         # Join new_dat3a with file_data
         file_data.update(new_data)
         # Sets file's current position at offset.
-        file.seek(0)
+        #file.seek(0)
         # convert back to json.
         json.dump(file_data, file, indent = 6)

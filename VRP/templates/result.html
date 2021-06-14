@@ -79,11 +79,9 @@
           <!-- HEADING FORMATION -->
           <tr style="color: white;">
               <th>Simulation</th>
-              <th>Algorithm</th>
               <th>Vehicles</th>
               <th>Routes</th>
               <th>Distance</th>
-              <th>Map</th>
           </tr>    
 
           <script>
@@ -101,10 +99,7 @@
                           // DATA FROM JSON OBJECT
                           student += '<tr>';
                           student += '<td>' + 
-                              value.Simulation + '</td>';
-
-                          student += '<td>' + 
-                              value.Algorithm + '</td>';
+                              value.ID + '</td>';
 
                           student += '<td>' + 
                               value.Vehicles + '</td>';
@@ -112,11 +107,10 @@
                           student += '<td>' + 
                               value.Routes + '</td>';
 
-                              student += '<td>' + 
+                          student += '<td>' + 
                               value.Routes + '</td>';
 
-                          student += '<td>' + 
-                              value.Map + '<img src="{% static 'images/map.png' %}" />';
+               
                               
                           student += '</tr>';
                       });

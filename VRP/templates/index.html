@@ -63,7 +63,37 @@
             opacity: 0.9;
             width: 30vw;
         }
-
+        table {
+            margin: 0 auto;
+            font-size: large;
+            border: 1px solid black;
+        }
+  
+        h1 {
+            text-align: center;
+            color:white;
+            font-size: xx-large;
+            font-family: 'Gill Sans', 
+                'Gill Sans MT', ' Calibri', 
+                'Trebuchet MS', 'sans-serif';
+        }
+  
+        td {
+            background-color: #E4F5D4;
+            border: 1px solid black;
+        }
+  
+        th,
+        td {
+            font-weight: bold;
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+        }
+  
+        td {
+            font-weight: lighter;
+        }
    </style>
 </head>
 <body>
@@ -139,12 +169,54 @@
 
      </div>
      <div id="myDiv" class="myDiv" style="margin-left: 68vw;margin-top:-38vw;height: 30vw;display: none;">
-        <h3 class="title">SIMULATION RESULTS</h3> 
-        <h3 class="text" style="font-size: 1vw;">Vehicles Number: XXX</h3>
-        <br>
-        <h3 class="text">Routes:</h3>
-        <h4 class="text" style="font-size: 1vw;" >-[0,0,0,0,0,0] with the distance traveled of  {{ distance1 }}</h>
-        <h4 class="text" style="font-size: 1vw;" >-[0,0,0,0,0,0] with the distance traveled of {{ distance1 }}</h>
+        <section>
+            <h1>Simulation Results</h1>
+      
+            <!-- TABLE CONSTRUCTION-->
+            <table id='table'>
+                <!-- HEADING FORMATION -->
+                <tr style="color: white;">
+                    <th>ID</th>
+                    <th>Vehicles</th>
+                    <th>Routes</th>
+                    <th>Distance</th>
+                </tr>    
+      
+                <script>
+                    $(document).ready(function () {
+      
+                        // FETCHING DATA FROM JSON FILE
+                        $.getJSON("{% static 'images/data.json' %}", 
+                                function (data) {
+                            var item = '';
+      
+                            // ITERATING THROUGH OBJECTS
+                            $.each(data, function (key, value) {
+      
+                                //CONSTRUCTION OF ROWS HAVING
+                                // DATA FROM JSON OBJECT
+                                item += '<tr>';
+                                    item += '<td>' + 
+                                    value.ID + '</td>';
+      
+                               item += '<td>' + 
+                                    value.Vehicles + '</td>';
+      
+                                item += '<td>' + 
+                                    value.Routes + '</td>';
+      
+                                item += '<td>' + 
+                                    value.Routes + '</td>';
+      
+                                item += '</tr>';
+                            });
+                              
+                            //INSERTING ROWS INTO TABLE 
+                            $('#table').append(item);
+                        });
+                    });
+                </script>
+        </section>
     </div>
     
     <script>
