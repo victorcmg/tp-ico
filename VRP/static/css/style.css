@@ -1,4 +1,11 @@
-body #mapid { height: 500px;
+
+
+body #mapid { 
+  margin-left: 5px;
+  width:900px; 
+  height: 700px;
+  border-radius: 200px; 
+  z-index: 500;
  }
 
 body #coord{

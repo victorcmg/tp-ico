@@ -152,7 +152,7 @@
         </div>
     
         
-     <div id="mapid" style="margin-left: 5vh; width: 1200px; height: 700px; border-radius: 200px;  z-index: 500";></div>>
+     <div id="mapid" style="margin-left: 5vh; width: 900px; height: 700px; border-radius: 200px;  z-index: 500";></div>>
     
 
      <div class="row">
@@ -189,32 +189,40 @@
                         $.getJSON("{% static 'images/data.json' %}", 
                                 function (data) {
                             var item = '';
-      
+                          
+                            var counter =0         
                             // ITERATING THROUGH OBJECTS
                             $.each(data, function (key, value) {
-      
+                                    counter += 1;
                                 //CONSTRUCTION OF ROWS HAVING
                                 // DATA FROM JSON OBJECT
+
+                                
                                 item += '<tr>';
                                     item += '<td>' + 
-                                    value.ID + '</td>';
-      
-                               item += '<td>' + 
-                                    value.Vehicles + '</td>';
-      
-                                item += '<td>' + 
-                                    value.Routes + '</td>';
-      
-                                item += '<td>' + 
-                                    value.Routes + '</td>';
-      
-                                item += '</tr>';
+                                      counter + '</td>';
+          
+                                      item += '<td>' + 
+                                        value.Vehicles + '</td>';
+          
+                                        item += '<td>' + 
+                                        
+                                        value.Routes.join('-')
+                                        
+                                        + '</td>';
+          
+                                        item += '<td>' + 
+                                        value.Distance.join('-') + '</td>';
+          
+                    
+                                        
+                                        item += '</tr>';
+                                });
+                                  
+                                //INSERTING ROWS INTO TABLE 
+                                $('#table').append(item);
                             });
-                              
-                            //INSERTING ROWS INTO TABLE 
-                            $('#table').append(item);
                         });
-                    });
                 </script>
         </section>
     </div>
