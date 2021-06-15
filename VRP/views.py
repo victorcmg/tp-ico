@@ -79,7 +79,7 @@ def ajax_post_view(request):
         #object_data.append(new_data)
     write_json(new_data,'VRP/static/images/data.json')    
     
-    return JsonResponse({'data': 'data'})
+    return JsonResponse({"dados": new_data}, status=200)
 
 lista=[]
 def write_json(data,filename):

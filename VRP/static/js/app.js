@@ -30,7 +30,7 @@ marker.on('click', removeMarker)
 function chooseAddr(lat1, lng1)
 {
 
-console.log(lat1,lng1)
+//console.log(lat1,lng1)
 mymap.closePopup();
 mymap.setView([lat1, lng1], 15);
 const marker = new L.circleMarker([lat1,lng1], {
@@ -42,6 +42,8 @@ marker.setLatLng([lat1, lng1]);
  document.getElementById('lat').value = lat;
  document.getElementById('lng').value = lon;
  marker.bindPopup("Lat " + lat + "<br />Lon " + lon).openPopup();
+
+ document.getElementById('results').innerHTML = "";
 }
 
 function myFunction(arr)
@@ -82,8 +84,8 @@ function address_search()
 }
 
 
-$(".btn-sender").click(function () {
-console.log(coord)
+$(".btn-calcular").click(function () {
+//console.log(coord)
 let num_veiculos =parseInt($("#nr_veiculos").val())
 $.ajaxSetup({
   headers: {
@@ -95,11 +97,38 @@ url: 'post/request/ajax',
 method: 'POST',
 data: JSON.stringify({'data':coord,'num_veiculos':num_veiculos}),
 dataType: 'json',
-success: function (data) {
-if (data.taken) {
-  
-}
-}
+success: function (response) {
+  var dados = response['dados']
+  desenhar(dados)
+
+} 
 
 });
 });
+
+function desenhar(dados){
+  var tab = document.querySelector('#table')
+  
+  var item = '';
+  item += '<tr>';
+
+   
+    item += '<td>' + 
+    dados.Vehicles + '</td>';
+
+      item += '<td>' + 
+      
+      dados.Routes.join('-')
+      
+      + '</td>';
+
+      item += '<td>' + 
+      dados.Distance.join('-') 
+      +  '</td>';
+    item += '</tr>';
+//INSERTING ROWS INTO TABLE 
+$('#table').append(item);
+
+
+ 
+}
