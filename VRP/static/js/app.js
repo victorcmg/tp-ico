@@ -129,6 +129,10 @@ function desenhar(dados){
 //INSERTING ROWS INTO TABLE 
 $('#table').append(item);
 
-
- 
 }
+
+document.querySelector('.btn-reiniciar').addEventListener('click',()=>{
+
+  window.location.reload();
+  return false;
+})
